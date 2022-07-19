@@ -3,7 +3,6 @@ require './nameable'
 require './capitalizeDecorator'
 require './trimmerDecorator'
 
-
 class Person < Nameable
   attr_accessor :name, :age
   attr_reader :id
