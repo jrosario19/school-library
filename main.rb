@@ -124,14 +124,14 @@ class App
   end
 
   def list_all_rentals_by_id
-    puts 'Select a person from the following list by number (not id)'
+    puts 'Select a person from the following list'
     store.people.each_with_index do |person, index|
       puts "#{index}) Name: #{person.name}, ID: #{person.id}, Age: #{person.age}"
     end
     print 'Enter the id of the person: '
-    person_selection = gets.chomp.to_i
+    person_selection = gets.chomp.to_s
     puts 'Rentals:'
-    person = store.people[person_selection]
+    person = store.people.find { |item| item.id == person_selection }
     person.rentals.each do |rental|
       puts "Date: #{rental.date}, Book \"#{rental.book.title}\" by #{rental.book.author}"
     end
