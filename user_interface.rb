@@ -10,18 +10,20 @@ class UI
 
   def initialize
     @store = Store.new
+    @main_menu = [
+      'List all books',
+      'List all people',
+      'Create a person',
+      'Create a book',
+      'Create a rental',
+      'List all rentals for a given person id',
+      'Exit'
+    ]
   end
 
   def main_menu
-    puts ''
-    puts 'Please choose an option by entering a number'
-    puts '1 - List all books'
-    puts '2 - List all people'
-    puts '3 - Create a person'
-    puts '4 - Create a book'
-    puts '5 - Create a rental'
-    puts '6 - List all rentals for a given person id'
-    puts '7 - Exit'
+    puts ['', 'Please choose an option by entering a number']
+    @main_menu.each_with_index { |option, index| puts "#{index + 1} - #{option}" }
     main_selection
   end
 
@@ -124,14 +126,14 @@ class UI
   end
 
   def list_all_rentals_by_id
-    puts 'Select a person from the following list'
+    puts 'Select a person from the following list by number (not id)'
     store.people.each_with_index do |person, index|
       puts "#{index}) Name: #{person.name}, ID: #{person.id}, Age: #{person.age}"
     end
     print 'Enter the id of the person: '
     person_selection = gets.chomp.to_s
     puts 'Rentals:'
-    person = store.people.find { |item| item.id == person_selection }
+    person = store.people.find { |item| item.id==person_selection }
     person.rentals.each do |rental|
       puts "Date: #{rental.date}, Book \"#{rental.book.title}\" by #{rental.book.author}"
     end
@@ -142,5 +144,3 @@ class UI
     main_menu
   end
 end
-
-
