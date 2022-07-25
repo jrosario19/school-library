@@ -25,7 +25,7 @@ This will create a directory in the name of the project folder.
 - Run `gem install rspec`
 - Run `rspec` to run the tests
 
-## Authors
+## Author
 
 👤 **Juan Francisco Rosario Suli**
 
@@ -33,6 +33,13 @@ This will create a directory in the name of the project folder.
 - Twitter: [@jrosario19](https://twitter.com/jrosario19)
 - LinkedIn: [Juan Fco. Rosario](https://linkedin.com/in/juan-francisco-rosario-suli-44595051)
 
+## Contributor
+
+👤 **Adaobi Vivian Okoye**
+
+- GitHub: [@githubhandle](https://github.com/adanzeakonobi) 
+- Twitter: [@twitterhandle](https://twitter.com/Adaebubemmuta)
+- LinkedIn: [LinkedIn](https://linkedin.com/in/okoyeaadaobi)
 
 
 ## 🤝 Contributing
