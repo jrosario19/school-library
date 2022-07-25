@@ -133,7 +133,7 @@ class UI
     print 'Enter the id of the person: '
     person_selection = gets.chomp.to_s
     puts 'Rentals:'
-    person = store.people.find { |item| item.id==person_selection }
+    person = store.people.find { |item| item.id == person_selection }
     person.rentals.each do |rental|
       puts "Date: #{rental.date}, Book \"#{rental.book.title}\" by #{rental.book.author}"
     end
