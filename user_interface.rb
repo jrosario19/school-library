@@ -13,7 +13,9 @@ class UI
   def initialize
     @store = Store.new
     begin
+        
         Reader.new(@store).read
+        
       rescue Errno::ENOENT
         puts 'No data file found.'
       end
@@ -111,6 +113,7 @@ class UI
     author = gets.chomp
     book = Book.new(title, author)
     store.books << book
+    @writer.books(title: title, author: author)
     puts 'Book created successfully'
     main_menu
   end
@@ -131,6 +134,8 @@ class UI
     print('Enter the date of the rental (YYYY-MM-DD): ')
     rental_date = gets.chomp
     Rental.new(rental_date, store.books[book_selection], store.people[person_selection])
+    @writer.rentals(date: rental_date,
+                    book_title: store.books[book_selection].title, person_name: store.people[person_selection].name)
     puts 'Rental created successfully'
     main_menu
   end
