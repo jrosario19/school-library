@@ -4,12 +4,20 @@ require './person'
 require './teacher'
 require './student'
 require './rental'
+require './writer'
+require './reader'
 
 class UI
   attr_reader :store
 
   def initialize
     @store = Store.new
+    begin
+        Reader.new(@store).read
+      rescue Errno::ENOENT
+        puts 'No data file found.'
+      end
+      @writer = Writer.new
     @main_menu = [
       'List all books',
       'List all people',
@@ -36,7 +44,7 @@ class UI
     when '4' then create_book
     when '5' then create_rental
     when '6' then list_all_rentals_by_id
-    when '7' then abort('Thanks for your business. Goodbye!')
+    when '7' then @writer.close_all and abort('Thanks for your business. Goodbye!')
     else
       puts 'Invalid selection'
       main_selection
@@ -79,6 +87,7 @@ class UI
     parent_permission = gets.chomp.downcase == 'y'
     student = Student.new(age, 'n/a', name, parent_permission: parent_permission)
     @store.people << student
+    @writer.people(age: age, name: name, parent_permission: parent_permission)
     puts 'Person created successfully'
   end
 
@@ -91,6 +100,7 @@ class UI
     specialization = gets.chomp
     teacher = Teacher.new(age, specialization, name)
     @store.people << teacher
+    @writer.people(age: age, name: name, specialization: specialization)
     puts 'Person created successfully'
   end
 
