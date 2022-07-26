@@ -134,7 +134,8 @@ class UI
     print('Enter the date of the rental (YYYY-MM-DD): ')
     rental_date = gets.chomp
     Rental.new(rental_date, store.books[book_selection], store.people[person_selection])
-    
+    @writer.rentals(date: rental_date,
+                    book_title: store.books[book_selection].title, person_name: store.people[person_selection].name)
     puts 'Rental created successfully'
     main_menu
   end
