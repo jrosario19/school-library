@@ -16,11 +16,10 @@ class Reader
   end
 
   def read
-    if(@people_file!=nil)
+    
     @people_file.each { |line| @people << JSON.parse(line) }
     @people_file.close
     create_people
-    end
     @books_file.each { |line| @books << JSON.parse(line) }
     @books_file.close
     create_books
