@@ -13,13 +13,11 @@ class UI
   def initialize
     @store = Store.new
     begin
-        
-        Reader.new(@store).read
-        
-      rescue Errno::ENOENT
-        puts 'No data file found.'
-      end
-      @writer = Writer.new
+      Reader.new(@store).read
+    rescue Errno::ENOENT
+      puts 'No data file found.'
+    end
+    @writer = Writer.new
     @main_menu = [
       'List all books',
       'List all people',

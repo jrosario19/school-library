@@ -16,7 +16,6 @@ class Reader
   end
 
   def read
-    
     @people_file.each { |line| @people << JSON.parse(line) }
     @people_file.close
     create_people
